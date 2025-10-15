@@ -1,0 +1,48 @@
+# # 1. Uma empresa de pesquisas precisa tabular os resultados da
+# # seguinte enquete feita a um grande quantidade de organizações:
+# # "Qual o melhor Sistema Operacional para uso em servidores?"
+# # As possíveis respostas são:
+# # 1- Windows Server
+# # 2- Unix
+# # 3- Linux
+# # 4- Netware
+# # 5- Mac OS
+# # 6- Outro
+# Você foi contratado para desenvolver um programa que leia o
+# resultado da enquete e informe ao final o resultado da mesma.
+# O programa deverá ler os valores até ser informado o valor 0,
+# que encerra a entrada dos dados. Não deverão ser aceitos
+# valores além dos válidos para o programa (0 a 6). Os valores
+# referentes a cada uma das opções devem ser armazenados num
+# vetor. Após os dados terem sido completamente informados, o
+# programa deverá calcular a percentual de cada um dos
+# concorrentes e informar o vencedor da enquete. O formato da
+# saída foi dado pela empresa, e é o seguinte:
+
+lista_votos = []
+while True:
+    voto = int(input("Digite seu voto (1-6) ou 0 para sair: "))
+    if voto == 0:
+        break
+    elif 1 <= voto <= 6:
+        lista_votos.append(voto)
+    else:
+        print("Voto inválido. Tente novamente.")
+
+print(lista_votos)
+contadores = [0,0,0,0,0,0]
+for voto in lista_votos:
+    contadores[voto-1] += 1
+print(contadores)
+
+print(f"Windows Server: {contadores[0]} votos | {contadores[0]/len(lista_votos)*100:.2f}%")
+print(f"Unix: {contadores[1]} votos | {contadores[1]/len(lista_votos)*100:.2f}%")
+print(f"Linux: {contadores[2]} votos | {contadores[2]/len(lista_votos)*100:.2f}%")
+print(f"Netware: {contadores[3]} votos | {contadores[3]/len(lista_votos)*100:.2f}%")
+print(f"Mac OS: {contadores[4]} votos | {contadores[4]/len(lista_votos)*100:.2f}%")
+print(f"Outro: {contadores[5]} votos | {contadores[5]/len(lista_votos)*100:.2f}%")
+
+maior = max(contadores)
+indice_maior = contadores.index(maior) + 1
+sistemas = ["Windows Server", "Unix", "Linux", "Netware", "Mac OS", "Outro"]
+print(f"O sistema mais votado foi {sistemas[indice_maior-1]} com {maior} votos, correspondendo a {maior/len(lista_votos)*100:.2f}% dos votos.")
