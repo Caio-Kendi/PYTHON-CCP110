@@ -12,8 +12,6 @@
 # ▶ 4 - Apaga contato (delete)
 # ▶ 0 - Sair
 
-0
-
 menu = {
     "1": "Novo contato",
     "2": "Buscar contato",
